@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>registromedico</title>
+</head>
+<body>
+<div id="app">
+    <h1>{{titulo}}</h1>
+    <h2 style="align-self: center">Registro de Pacientes</h2>
+    <p style="position: center">Nombre paciente</p>
+    <input style="background: darkkhaki" type="text" size="200%"/>
+    <p>rut</p>
+    <input style="background: darkkhaki" type="text" size="200%"/>
+    <p style="color: darkblue">Examenes a registrar</p>
+    <ul>
+        <li v-for="examen of examenes">
+            {{examen}}
+
+        </li>
+    </ul>
+<p style="color: darkblue">valores</p>
+    <ul>
+        <li v-for="valor of valores">
+            {{valor.nombre}}-{{valor.valor}}<span v-if="valor.nombre === 'globulos-rojos'" style="color: red">
+            área hematología</span>
+        </li>
+    </ul>
+<input v-model="nuevo_valor">
+    <button @click="agregarvalor">agregar valor</button>
+
+
+</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data:{
+            titulo:'Registros médicos online',
+            examenes: ['hemograma','electrolitos','perfil lipidico'] , /*arrays */
+            valores:[                                                /*objetos*/
+                {nombre:'potasio', valor:' 3,5 a 5,3 mEq/L'},
+                {nombre:'calcio',valor: '8.5 a 10.2 mg/dL (2.13 a 2.55 milimol/L)'},
+                {nombre:'fosforo',valor:'2.5 - 4.5 mg/dL'},
+                {nombre:'globulos-rojos',valor:'Hombre: de 4.7 a 6.1 millones de células por microlitro (células/mcL)' +
+                        'Mujer: de 4.2 a 5.4 millones de células/mcL.' },
+
+            ],
+            nuevo_valor:'',
+        },
+        methods:{
+            agregarvalor(){
+                this.valores.push({
+                    nombre: this.nuevo_valor,valor:'',
+                })
+            }
+        }
+    })
+
+</script>
+</html>

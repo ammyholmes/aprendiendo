@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-show </title>
+</head>
+<body>
+<div id="app">
+    <h1>Ingreso de usuarios</h1>
+    <input v-model="nombre" type="text"/>
+    <p>nombre de usuario</p>
+
+    <input v-model="contraseña" type="password"/>
+    <p>contraseña</p>
+    <button v-model="bienvenida" @click="aceptar">aceptar</button>
+    <p v-show="bienvenida">bienvenido</p>
+
+
+
+<pre>{{$data}}</pre>
+</div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.min.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            bienvenida:true,
+            nombre:'',
+            contraseña:'',
+        },
+        methods:{
+
+
+        }
+
+    })
+</script>
+</html>
